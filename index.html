@@ -17,7 +17,8 @@
         :root {
             --bg-body: #121214;
             --bg-card: #1e1e24;
-            --accent-color: #d4af37; /* Emas Elegan */
+            --bg-card-hover: #25252d;
+            --accent-color: #d4af37; /* Warm Gold Accent */
             --accent-hover: #b59328;
             --text-main: #f0f0f4;
             --text-muted: #a0a0ab;
@@ -31,7 +32,7 @@
             padding-top: 70px;
         }
 
-        /* --- Navbar Sticky --- */
+        /* --- Header & Navbar --- */
         header {
             position: fixed;
             top: 0;
@@ -53,7 +54,7 @@
         }
 
         .logo {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: var(--accent-color);
             text-decoration: none;
@@ -78,7 +79,7 @@
             color: var(--accent-color);
         }
 
-        /* --- Layout Containers --- */
+        /* --- Global Layout Containers --- */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -104,7 +105,7 @@
             border-radius: 2px;
         }
 
-        /* --- Button --- */
+        /* --- Buttons --- */
         .btn {
             display: inline-block;
             padding: 0.8rem 1.8rem;
@@ -115,6 +116,8 @@
             text-decoration: none;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+            cursor: pointer;
+            border: none;
         }
 
         .btn:hover {
@@ -128,7 +131,7 @@
             display: flex;
             align-items: center;
             gap: 3.5rem;
-            min-height: 75vh;
+            min-height: 80vh;
         }
 
         .hero-img-container {
@@ -147,6 +150,7 @@
         .hero-content h1 {
             font-size: 2.8rem;
             margin-bottom: 0.5rem;
+            color: var(--text-main);
         }
 
         .hero-content h3 {
@@ -163,7 +167,7 @@
             max-width: 700px;
         }
 
-        /* --- Expertise & Skills --- */
+        /* --- Skills & Expertise Section --- */
         .two-column-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -206,7 +210,7 @@
             font-size: 1.2rem;
         }
 
-        /* Progress Bar Skills */
+        /* Progress Bars */
         .skill-item {
             margin-bottom: 1.4rem;
         }
@@ -244,7 +248,7 @@
             border-radius: 4px;
         }
 
-        /* --- Education & Experience Timeline --- */
+        /* --- Education & Experience (Timeline) --- */
         .timeline {
             position: relative;
             max-width: 900px;
@@ -308,7 +312,7 @@
             font-size: 0.95rem;
         }
 
-        /* --- Projects Grid --- */
+        /* --- Projects Section --- */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -321,6 +325,7 @@
             overflow: hidden;
             border: 1px solid var(--border-color);
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .project-card:hover {
@@ -343,12 +348,99 @@
         .project-title {
             font-size: 1.15rem;
             margin-bottom: 0.6rem;
+            color: var(--text-main);
         }
 
         .project-desc {
             color: var(--text-muted);
             font-size: 0.9rem;
             line-height: 1.5;
+        }
+
+        /* --- Modal Popup Styling --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 2000;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-box {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2.5rem;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+            text-align: center;
+        }
+
+        .modal-overlay.active .modal-box {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--accent-color);
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+        }
+
+        .modal-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-color);
+            color: var(--text-main);
+            background-color: transparent;
         }
 
         /* --- Hobbies Tags --- */
@@ -375,7 +467,7 @@
             transform: translateY(-2px);
         }
 
-        /* --- Contact & Footer --- */
+        /* --- Contact Section & Footer --- */
         .contact-box {
             background-color: var(--bg-card);
             border-radius: 12px;
@@ -393,6 +485,9 @@
         }
 
         .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
             color: var(--text-muted);
             font-size: 1rem;
         }
@@ -420,11 +515,12 @@
             font-size: 0.85rem;
         }
 
-        /* --- Responsive --- */
+        /* --- Responsive Design --- */
         @media (max-width: 768px) {
             #about {
                 flex-direction: column;
                 text-align: center;
+                gap: 2rem;
             }
 
             .hero-content p {
@@ -444,6 +540,7 @@
 </head>
 <body>
 
+    <!-- Header / Navbar -->
     <header>
         <nav class="nav-container">
             <a href="#" class="logo">MABIS IRCHAMMUDDIN</a>
@@ -458,8 +555,10 @@
         </nav>
     </header>
 
+    <!-- Main Content Container -->
     <main class="container">
 
+        <!-- Hero Section -->
         <section id="about">
             <div class="hero-img-container">
                 <img src="profilmabis.jpeg" alt="Mabis Profil" class="profile-img">
@@ -472,8 +571,10 @@
             </div>
         </section>
 
+        <!-- Expertise & Skills Section -->
         <section id="expertise" style="padding-top: 4rem;">
             <div class="two-column-grid">
+                <!-- Expertise -->
                 <div class="card">
                     <h2 class="section-title">Expertise</h2>
                     <ul class="expertise-list">
@@ -486,6 +587,7 @@
                     </ul>
                 </div>
 
+                <!-- Skill Sets -->
                 <div class="card" id="skills">
                     <h2 class="section-title">Skill Sets</h2>
                     
@@ -553,6 +655,7 @@
             </div>
         </section>
 
+        <!-- Education & Experience Section -->
         <section id="education" style="padding-top: 5rem;">
             <h2 class="section-title">Education & Experience</h2>
             <div class="timeline">
@@ -600,7 +703,7 @@
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <span class="timeline-date">2017</span>
-                        <h3 class="timeline-title">Islamic Senior High School 7 Jombang</h3>
+                        <h3 class="timeline-title">Islamic Senior HS 7 Jombang</h3>
                         <p class="timeline-sub">Science Major</p>
                     </div>
                 </div>
@@ -608,11 +711,12 @@
             </div>
         </section>
 
+        <!-- Projects Section (MODIFIED FOR POPUP) -->
         <section id="projects" style="padding-top: 5rem;">
             <h2 class="section-title">Portfolio Projects</h2>
             <div class="projects-grid">
                 
-                <div class="project-card">
+                <div class="project-card" onclick="openModal('Project 1: Sales Dashboard', 'A dynamic Excel dashboard analyzing sales performance using PivotTables and XLOOKUP formulas.', 'https://drive.google.com/your-link-1')">
                     <img src="https://via.placeholder.com/300x200" alt="Project 1" class="project-img">
                     <div class="project-info">
                         <h3 class="project-title">Project 1: Sales Dashboard</h3>
@@ -620,7 +724,7 @@
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card" onclick="openModal('Project 2: School Data Automation', 'Automated student reporting tool built with VBA Macro & MySQL integration to optimize operations.', 'https://drive.google.com/your-link-2')">
                     <img src="https://via.placeholder.com/300x200" alt="Project 2" class="project-img">
                     <div class="project-info">
                         <h3 class="project-title">Project 2: School Data Automation</h3>
@@ -628,7 +732,7 @@
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card" onclick="openModal('Project 3: Brand Identity Design', 'Graphic design project featuring promotional banners and digital marketing assets using CorelDraw & Psd.', 'https://drive.google.com/your-link-3')">
                     <img src="https://via.placeholder.com/300x200" alt="Project 3" class="project-img">
                     <div class="project-info">
                         <h3 class="project-title">Project 3: Brand Identity Design</h3>
@@ -636,7 +740,7 @@
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card" onclick="openModal('Project 4: Content Creation Hub', 'Educational spreadsheet tutorials and templates designed for online learning communities.', 'https://drive.google.com/your-link-4')">
                     <img src="https://via.placeholder.com/300x200" alt="Project 4" class="project-img">
                     <div class="project-info">
                         <h3 class="project-title">Project 4: Content Creation Hub</h3>
@@ -647,6 +751,7 @@
             </div>
         </section>
 
+        <!-- Hobbies Section -->
         <section style="padding-top: 4rem;">
             <h2 class="section-title">Hobbies & Interests</h2>
             <div class="hobbies-container">
@@ -658,6 +763,7 @@
             </div>
         </section>
 
+        <!-- Contact Section -->
         <section id="contact" style="padding-top: 5rem;">
             <div class="contact-box">
                 <h2 class="section-title" style="margin-bottom: 1rem;">Get In Touch</h2>
@@ -683,9 +789,51 @@
 
     </main>
 
+    <!-- Modal Popup Container -->
+    <div class="modal-overlay" id="projectModal">
+        <div class="modal-box">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <h3 class="modal-title" id="modalTitle">Project Title</h3>
+            <p class="modal-desc" id="modalDesc">Project description goes here...</p>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" onclick="closeModal()">Close</button>
+                <a href="#" id="modalVisitBtn" target="_blank" class="btn">Visit Porto</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
     <footer>
         <p>&copy; 2026 Mabis Irchammuddin Achmad. All rights reserved.</p>
     </footer>
 
+    <!-- JavaScript For Popup Interactivity -->
+    <script>
+        function openModal(title, description, driveUrl) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDesc').innerText = description;
+            document.getElementById('modalVisitBtn').setAttribute('href', driveUrl);
+            document.getElementById('projectModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('projectModal').classList.remove('active');
+        }
+
+        // Close modal when clicking outside the modal box
+        window.onclick = function(event) {
+            const modal = document.getElementById('projectModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+
 </body>
 </html>
+"""
+
+with open("portfolio.html", "w", encoding="utf-8") as f:
+    f.write(html_modal_content)
+
+print("File portfolio.html with popup functionality updated successfully.")
